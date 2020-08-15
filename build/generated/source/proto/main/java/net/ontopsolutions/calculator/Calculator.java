@@ -24,6 +24,16 @@ public final class Calculator {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_calculator_SumResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_calculator_SquareRootRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_calculator_SquareRootRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_calculator_SquareRootResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_calculator_SquareRootResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -36,8 +46,12 @@ public final class Calculator {
       "\n\033calculator/calculator.proto\022\ncalculato" +
       "r\"9\n\nSumRequest\022\024\n\014first_number\030\001 \001(\005\022\025\n" +
       "\rsecond_number\030\002 \001(\005\"\035\n\013SumResponse\022\016\n\006r" +
-      "esult\030\001 \001(\0052M\n\021CalculatorService\0228\n\003sum\022" +
-      "\026.calculator.SumRequest\032\027.calculator.Sum" +
+      "esult\030\001 \001(\005\"#\n\021SquareRootRequest\022\016\n\006numb" +
+      "er\030\001 \001(\005\")\n\022SquareRootResponse\022\023\n\013number" +
+      "_root\030\001 \001(\0012\234\001\n\021CalculatorService\0228\n\003sum" +
+      "\022\026.calculator.SumRequest\032\027.calculator.Su" +
+      "mResponse\"\000\022M\n\nsquareRoot\022\035.calculator.S" +
+      "quareRootRequest\032\036.calculator.SquareRoot" +
       "Response\"\000B!\n\035net.ontopsolutions.calcula" +
       "torP\001b\006proto3"
     };
@@ -57,6 +71,18 @@ public final class Calculator {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_calculator_SumResponse_descriptor,
         new java.lang.String[] { "Result", });
+    internal_static_calculator_SquareRootRequest_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_calculator_SquareRootRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_calculator_SquareRootRequest_descriptor,
+        new java.lang.String[] { "Number", });
+    internal_static_calculator_SquareRootResponse_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_calculator_SquareRootResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_calculator_SquareRootResponse_descriptor,
+        new java.lang.String[] { "NumberRoot", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

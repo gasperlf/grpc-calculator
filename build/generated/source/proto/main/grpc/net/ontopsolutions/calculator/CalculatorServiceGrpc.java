@@ -58,6 +58,37 @@ public final class CalculatorServiceGrpc {
     return getSumMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<net.ontopsolutions.calculator.SquareRootRequest,
+      net.ontopsolutions.calculator.SquareRootResponse> getSquareRootMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "squareRoot",
+      requestType = net.ontopsolutions.calculator.SquareRootRequest.class,
+      responseType = net.ontopsolutions.calculator.SquareRootResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<net.ontopsolutions.calculator.SquareRootRequest,
+      net.ontopsolutions.calculator.SquareRootResponse> getSquareRootMethod() {
+    io.grpc.MethodDescriptor<net.ontopsolutions.calculator.SquareRootRequest, net.ontopsolutions.calculator.SquareRootResponse> getSquareRootMethod;
+    if ((getSquareRootMethod = CalculatorServiceGrpc.getSquareRootMethod) == null) {
+      synchronized (CalculatorServiceGrpc.class) {
+        if ((getSquareRootMethod = CalculatorServiceGrpc.getSquareRootMethod) == null) {
+          CalculatorServiceGrpc.getSquareRootMethod = getSquareRootMethod =
+              io.grpc.MethodDescriptor.<net.ontopsolutions.calculator.SquareRootRequest, net.ontopsolutions.calculator.SquareRootResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "squareRoot"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  net.ontopsolutions.calculator.SquareRootRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  net.ontopsolutions.calculator.SquareRootResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CalculatorServiceMethodDescriptorSupplier("squareRoot"))
+              .build();
+        }
+      }
+    }
+    return getSquareRootMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -113,6 +144,17 @@ public final class CalculatorServiceGrpc {
       asyncUnimplementedUnaryCall(getSumMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     *error handling
+     *this RPC will throw an exception if the sent number is negative
+     * </pre>
+     */
+    public void squareRoot(net.ontopsolutions.calculator.SquareRootRequest request,
+        io.grpc.stub.StreamObserver<net.ontopsolutions.calculator.SquareRootResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getSquareRootMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -122,6 +164,13 @@ public final class CalculatorServiceGrpc {
                 net.ontopsolutions.calculator.SumRequest,
                 net.ontopsolutions.calculator.SumResponse>(
                   this, METHODID_SUM)))
+          .addMethod(
+            getSquareRootMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                net.ontopsolutions.calculator.SquareRootRequest,
+                net.ontopsolutions.calculator.SquareRootResponse>(
+                  this, METHODID_SQUARE_ROOT)))
           .build();
     }
   }
@@ -147,6 +196,18 @@ public final class CalculatorServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getSumMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     *error handling
+     *this RPC will throw an exception if the sent number is negative
+     * </pre>
+     */
+    public void squareRoot(net.ontopsolutions.calculator.SquareRootRequest request,
+        io.grpc.stub.StreamObserver<net.ontopsolutions.calculator.SquareRootResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getSquareRootMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -168,6 +229,17 @@ public final class CalculatorServiceGrpc {
     public net.ontopsolutions.calculator.SumResponse sum(net.ontopsolutions.calculator.SumRequest request) {
       return blockingUnaryCall(
           getChannel(), getSumMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     *error handling
+     *this RPC will throw an exception if the sent number is negative
+     * </pre>
+     */
+    public net.ontopsolutions.calculator.SquareRootResponse squareRoot(net.ontopsolutions.calculator.SquareRootRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getSquareRootMethod(), getCallOptions(), request);
     }
   }
 
@@ -192,9 +264,22 @@ public final class CalculatorServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getSumMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     *error handling
+     *this RPC will throw an exception if the sent number is negative
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<net.ontopsolutions.calculator.SquareRootResponse> squareRoot(
+        net.ontopsolutions.calculator.SquareRootRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getSquareRootMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_SUM = 0;
+  private static final int METHODID_SQUARE_ROOT = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -216,6 +301,10 @@ public final class CalculatorServiceGrpc {
         case METHODID_SUM:
           serviceImpl.sum((net.ontopsolutions.calculator.SumRequest) request,
               (io.grpc.stub.StreamObserver<net.ontopsolutions.calculator.SumResponse>) responseObserver);
+          break;
+        case METHODID_SQUARE_ROOT:
+          serviceImpl.squareRoot((net.ontopsolutions.calculator.SquareRootRequest) request,
+              (io.grpc.stub.StreamObserver<net.ontopsolutions.calculator.SquareRootResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -279,6 +368,7 @@ public final class CalculatorServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new CalculatorServiceFileDescriptorSupplier())
               .addMethod(getSumMethod())
+              .addMethod(getSquareRootMethod())
               .build();
         }
       }
